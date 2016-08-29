@@ -58,6 +58,7 @@
     "essence-button": "^1.0.8",
     "essence-card": "^1.0.7",
     "essence-core": "^1.0.20",
+    "essence-icon": "^1.0.7",
     "essence-image": "^1.0.6",
     "react": "^0.14.6",
     "react-dom": "^0.14.6"
