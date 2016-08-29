@@ -7,8 +7,9 @@ import Individual from './Individual.js';
 export default class IndividualList extends Component {
   render() {
     const p = this.props;
+    console.log(p.classes);
     return (
-      <Block classes={'e-row'}>
+      <Block classes={ `e-row ${p.classes || ''}` }>
       {
         p.individuals.map((individual, index) => {
           return (

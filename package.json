@@ -55,6 +55,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "essence-button": "^1.0.8",
     "essence-card": "^1.0.7",
     "essence-core": "^1.0.20",
     "essence-image": "^1.0.6",
