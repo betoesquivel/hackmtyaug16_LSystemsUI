@@ -21,7 +21,14 @@ module.exports = {
             warnings: true
         },
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+       'AWS_ACCOUNT_ID': JSON.stringify(process.env.AWS_ACCOUNT_ID),
+       'COGNITO_IDENTITY_POOL_ID': JSON.stringify(process.env.COGNITO_IDENTITY_POOL_ID),
+       'COGNITO_UNAUTH_ROLE_ARN': JSON.stringify(process.env.COGNITO_UNAUTH_ROLE_ARN)
+      }
+    })
   ],
   module: {
     loaders: [

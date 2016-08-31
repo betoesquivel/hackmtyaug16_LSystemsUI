@@ -8,7 +8,7 @@ import {orange, grey, blue, lightblue, lightergrey} from '../colors.js';
 import Individuals from './IndividualList.js';
 
 const CDN_URL = 'http://d1q0qlolnapf2k.cloudfront.net';
-const sampleID = 'testc';
+const sampleID = '001a281d-0070-4fa8-8175-b2cee94e3351';
 const individuals = [ 
   { 'imgSrc': `${CDN_URL}/${sampleID}.png` },
   { 'imgSrc': `${CDN_URL}/${sampleID}.png` },
