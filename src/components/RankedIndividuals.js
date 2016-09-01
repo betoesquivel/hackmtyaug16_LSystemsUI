@@ -28,13 +28,17 @@ const individuals = [
 export default class RankedIndividuals extends Component {
 
   _loadMore() {
-      const lastIndividual = this.props['lastIndividual'];
+      const lastIndividual = this.props['lastEvaluatedIndividual'];
+      console.log(`Requesting individuals starting at ${lastIndividual}`);
       this.props.getRankedIndividuals(lastIndividual);
   }
 
   _renderIndividuals() {
     const parsed = this.props['ranked-individuals'].map((i) => {
-      return { 'imgSrc': `${CDN_URL}/${i.id}.png` };
+      return {
+       'imgSrc': `${CDN_URL}/${i.id}.png`,
+       ...i
+      };
     });
     return ( <Individuals
               individuals={ parsed } /> );
@@ -43,6 +47,7 @@ export default class RankedIndividuals extends Component {
   renderInfiniteIndividuals() {
     return (
         <InfiniteScroll
+          hasMore={ this.props.hasMore }
           items={this._renderIndividuals()}
           loadMore={this._loadMore.bind(this)}
         />

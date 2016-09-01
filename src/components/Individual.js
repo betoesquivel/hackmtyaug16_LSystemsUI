@@ -17,7 +17,7 @@ export default class Individual extends Component {
     const p = this.props;
     return (
        <Block
-         classes={'brick brick-2 e-h-center e-v-center'}
+         classes={'brick brick-3 e-h-center e-v-center'}
          >
          <Card
            >
@@ -25,13 +25,13 @@ export default class Individual extends Component {
              style={ paintBackgroundColor(lightblue) }
              >
              <Text type={'span'} classes={'e-text-center'} typography={'e-title'}>
-               {`Individual ${p.index}`}
+               {`Individual ${p.individual.id}, ranked: ${p.individual.rank}`}
              </Text>
            </CardHeader>
 
            <CardContent>
              <Image
-               height={'128px'}
+               style={ {maxWidth:'100%', maxHeight: '100%'} }
                alt={`Individual ${p.index}`}
                src={p.individual.imgSrc} />
            </CardContent>
@@ -39,7 +39,7 @@ export default class Individual extends Component {
            <CardFooter
              style={ paintBackgroundColor(lightblue) }
              >
-             CardFooter
+             {`Axiom: ${p.individual.axiom} and Rules: ${JSON.stringify(p.individual.rules)} Iterations: ${p.individual.iterations + 1} Angle: ${p.individual.angle}`}
            </CardFooter>
          </Card>
        </Block>

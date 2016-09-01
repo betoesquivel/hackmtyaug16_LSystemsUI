@@ -1,21 +1,24 @@
-const region = 'eu-west-1';
-AWS.config.update({region: region || 'eu-west-1'});
-AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    AccountId: process.env.DUMMY_AWS_ACCOUNT_ID,
-    IdentityPoolId: process.env.COGNITO_IDENTITY_POOL_ID,
-    RoleArn: process.env.COGNITO_UNAUTH_ROLE_ARN
-});
+import { docClient } from './identity.js';
 
-const docClient = new AWS.DynamoDB.DocumentClient();
 
 export function getRankedParams(lastId) {
   let params = {
     TableName: 'lsystems',
+    IndexName: 'RankedLSystems',
+    KeyConditionExpression: '#type = :lsystem_type',
+    ExpressionAttributeNames: {
+      '#type' : 'type'
+    },
+    ExpressionAttributeValues: {
+      ':lsystem_type': 'design'
+    },
     ConsistentRead: false,
     ScanIndexForward: false,
-    Select: 'ALL_PROJECTED_ATTRIBUTES'
+    Select: 'ALL_PROJECTED_ATTRIBUTES',
+    Limit: 1000
   };
   if (lastId) {
+    console.log("With exclusive start key: " + lastId);
     params.ExclusiveStartKey = {
       id: lastId,
     };

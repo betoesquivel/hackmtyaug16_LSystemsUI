@@ -35,7 +35,8 @@ export default class App extends Component {
          state={state} />
         <RankedIndividuals
          {...bindActionCreators(Actions, dispatch)}
-         last-individual={state.get('lastEvaluatedIndividual')}
+         hasMore={state.get('hasMore')}
+         lastEvaluatedIndividual={state.get('lastEvaluatedIndividual')}
          ranked-individuals={state.get('rankedIndividuals')} />
 
       </div>
