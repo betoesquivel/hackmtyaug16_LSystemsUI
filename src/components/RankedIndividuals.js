@@ -4,10 +4,11 @@ import { Text } from 'essence-core';
 import InfiniteScroll from 'redux-infinite-scroll';
 
 import Individuals from './IndividualList.js';
+import Individual from './Individual.js';
 
 const CDN_URL = 'http://d1q0qlolnapf2k.cloudfront.net';
 const sampleID = '001a281d-0070-4fa8-8175-b2cee94e3351';
-const individuals = [ 
+const individuals = [
   { 'imgSrc': `${CDN_URL}/${sampleID}.png` },
   { 'imgSrc': `${CDN_URL}/${sampleID}.png` },
   { 'imgSrc': `${CDN_URL}/${sampleID}.png` },
@@ -33,6 +34,17 @@ export default class RankedIndividuals extends Component {
       this.props.getRankedIndividuals(lastIndividual);
   }
 
+  //_renderIndividuals() {
+    //const parsed = this.props['ranked-individuals'].map((i) => {
+      //return {
+       //'imgSrc': `${CDN_URL}/${i.id}.png`,
+       //...i
+      //};
+    //});
+    //return ( <Individuals
+              //individuals={ parsed } /> );
+  //}
+
   _renderIndividuals() {
     const parsed = this.props['ranked-individuals'].map((i) => {
       return {
@@ -40,8 +52,7 @@ export default class RankedIndividuals extends Component {
        ...i
       };
     });
-    return ( <Individuals
-              individuals={ parsed } /> );
+    return parsed.map( (i) => <Individual {...i} /> );
   }
 
   renderInfiniteIndividuals() {
