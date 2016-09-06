@@ -6,22 +6,11 @@ var TransferWebpackPlugin = require('transfer-webpack-plugin');
 module.exports = {
   devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:3000',
-    'webpack/hot/only-dev-server',
     './src/index'
   ],
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'app.min.js',
-    //publicPath: '/static/'
-  },
-  devServer: {
-    contentBase: 'src/www', // Relative directory for base of server
-    devtool: 'eval',
-    hot: true, // Live-reload
-    inline: true,
-    port: 3000, // Port Number
-    host: '0.0.0.0', // Change to '0.0.0.0' for external facing server
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
@@ -29,10 +18,8 @@ module.exports = {
             warnings: true
         },
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new TransferWebpackPlugin([
       {from: 'www'},
-      {from: '../assets'},
     ], path.resolve(__dirname, 'src')),
     new webpack.DefinePlugin({
       'process.env': {
@@ -46,7 +33,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
+        loaders: ['babel'],
         include: path.join(__dirname, 'src'),
         exclude: /node_modules/,
         extensions: ['.jsx', '.js']

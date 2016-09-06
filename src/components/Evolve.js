@@ -6,10 +6,11 @@ import Btn from 'essence-button';
 
 import {orange, grey, blue, lightblue, lightergrey} from '../colors.js';
 import Individuals from './IndividualList.js';
+import { OAuthSignInButton } from "redux-auth/material-ui-theme";
 
 const CDN_URL = 'http://d1q0qlolnapf2k.cloudfront.net';
-const sampleID = '001a281d-0070-4fa8-8175-b2cee94e3351';
-const individuals = [ 
+const sampleID = '0bec7563-2d04-44e7-bddd-cd8398b79c23';
+const individuals = [
   { 'imgSrc': `${CDN_URL}/${sampleID}.png` },
   { 'imgSrc': `${CDN_URL}/${sampleID}.png` },
   { 'imgSrc': `${CDN_URL}/${sampleID}.png` },
@@ -45,10 +46,16 @@ export default class Evolve extends Component {
                   className={'raised'}
                   style={ {backgroundColor: orange} }
                 />
+                <OAuthSignInButton
+                  provider={'facebook'}
+                  next={ () => alert('successful!') }
+                  >
+                  Facebook, beyoutch
+                </OAuthSignInButton>
               </CardFooter>
             </Card>
           </Block>
-        </Block> 
+        </Block>
     );
   }
 }

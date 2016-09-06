@@ -34,17 +34,6 @@ export default class RankedIndividuals extends Component {
       this.props.getRankedIndividuals(lastIndividual);
   }
 
-  //_renderIndividuals() {
-    //const parsed = this.props['ranked-individuals'].map((i) => {
-      //return {
-       //'imgSrc': `${CDN_URL}/${i.id}.png`,
-       //...i
-      //};
-    //});
-    //return ( <Individuals
-              //individuals={ parsed } /> );
-  //}
-
   _renderIndividuals() {
     const parsed = this.props['ranked-individuals'].map((i) => {
       return {
@@ -52,8 +41,19 @@ export default class RankedIndividuals extends Component {
        ...i
       };
     });
-    return parsed.map( (i) => <Individual {...i} /> );
+    return ( <Individuals
+              individuals={ parsed } /> );
   }
+
+  //_renderIndividuals() {
+    //const parsed = this.props['ranked-individuals'].map((i) => {
+      //return {
+       //'imgSrc': `${CDN_URL}/${i.id}.png`,
+       //...i
+      //};
+    //});
+    //return parsed.map( (i) => <Individual {...i} /> );
+  //}
 
   renderInfiniteIndividuals() {
     return (

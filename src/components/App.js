@@ -23,7 +23,7 @@ export default class App extends Component {
       <AppBar classes={'e-text-white'} style={ {backgroundColor: orange} }>
         <Icon name={"notification-sync"} />
         <Text classes={'e-text-right e-text-lowercase e-display-1'}>
-          {'Pubic hair drawings'}
+          {'genetic turtle-drawn lsystems'}
         </Text>
       </AppBar>
 
